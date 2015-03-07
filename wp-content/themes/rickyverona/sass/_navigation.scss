@@ -1,0 +1,146 @@
+// ------------------------------------------ //
+// Navbar
+// ------------------------------------------ //
+.navbar {
+    margin-bottom: 0;
+}
+
+
+// ------------------------------------------ //
+// Navbar Nav
+// ------------------------------------------ //
+.navbar-nav {
+  // Uncollapse the nav
+  @media (min-width: $grid-float-breakpoint) {
+    > li {
+      > a {
+        padding-top:    40px;
+        padding-bottom: 40px;
+        @include transition (all .25s ease-in-out);
+      }
+    }
+  }
+}
+
+
+
+// ------------------------------------------ //
+// Brand
+// ------------------------------------------ //
+.navbar-brand {
+    > img {
+
+        width: 180px;
+        @include box-shadow(0 5px 15px rgba(0,0,0,0.5));
+        @include transition (all .25s ease-in-out);
+
+
+        @media (min-width: $screen-sm-min) {
+            width: 170px;
+        }
+
+        @media (min-width: $screen-md-min) {
+            width: 200px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+            &.normal-img { width: 300px; }
+            &.stuck-img { width: 200px; }
+        }        
+    }
+}
+
+
+
+
+// ------------------------------------------ //
+// Navbar Default
+// ------------------------------------------ //
+.navbar-default {
+  border: none;
+  background-color: #000;
+  @include border-radius(0);
+  font-family: "Oswald", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  @include font-size(1.8);
+  @include transition (all .25s ease-in-out);
+
+  @media (min-width: $screen-sm-min) {
+    min-height: 100px;
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  @media (min-width: $grid-float-breakpoint) {
+    &.normal { min-height: 100px; }
+    &.stuck {min-height: 60px;}
+    &.stuck {
+      .navbar-nav {
+          > li {
+              > a {
+                padding-top:    20px;
+                padding-bottom: 20px;
+              }
+          }
+      }
+    }
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: #fff;
+          padding-left: 10px;
+          padding-right: 10px;
+
+    @media (min-width: $screen-md-min) {
+          padding-left: 15px;
+          padding-right: 15px;
+    }
+
+      &:hover,
+      &:focus {
+        color: #fff;
+        background-color: $red;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $red;
+        background-color: transparent;
+      }
+    }
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        color: $red;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border: none;
+    
+    .icon-bar {
+        background-color: #fff;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: $red;
+
+        .icon-bar {
+            background-color: #fff;
+        }
+    }
+
+  }
+}
