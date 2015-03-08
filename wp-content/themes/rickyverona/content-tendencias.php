@@ -4,50 +4,37 @@
             <br>
             <p class="wow fadeInLeft" data-wow-offset="30" data-wow-delay=".1s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident et quaerat voluptatem delectus, vero iure sequi in illo reprehenderit alias, maiores totam ducimus, architecto fugiat impedit facere id dicta aspernatur.</p>
         </div>
+        
+        <?php 
+            $posts = new WP_Query( array('post_type' => 'post') );
+        ?>
+
+        <?php if ( $posts -> have_posts() ) : ?>
 
         <div class="tendencias-blog">
             <div class="container">
                 <div class="row">
-                    <div class="tendencias-blog__tendencia col-sm-4">
+
+                    <?php while ( $posts -> have_posts() ) : $posts -> the_post(); ?>
+
+                    <div class="tendencias-blog__tendencia col-sm-4" id="post-<?php the_ID(); ?>">
                         <article>
-                            <h2><a href="">Lorem ipsum</a></h2>
-                            <p class="tendencias-blog__post-info">14 de Feb, 2015 16:47 | por <strong>Rickyverona</strong></p>
+                            <h2><?php the_title(); ?></h2>
+                            <small class="tendencias-blog__post-info">Publicado: <?php the_time('l, j \d\e F \a \l\a\s H:m'); ?> | por <strong><?php the_author(); ?></strong></small>
                             <br>
-                            <img src="http://lorempixel.com/370/170/fashion/5" alt="" class="img-responsive img-rounded">
+                            <?php the_post_thumbnail(); ?>
                             <br>
                             <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <?php the_excerpt(); ?>
                         </article>
                     </div><!-- /.tendencias-blog__tendencia -->
-                    <div class="tendencias-blog__tendencia col-sm-4">
-                        <article>
-                            <h2>Sed do eiusmod</h2>
-                            <p class="tendencias-blog__post-info">14 de Feb, 2015 16:47 | por <strong>Rickyverona</strong></p>
-                            <br>
-                            <img src="http://lorempixel.com/370/170/fashion/8" alt="" class="img-responsive img-rounded">
-                            <br>
-                            <br>
-                            <p>Consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat [...]</p>
-                        </article>
-                    </div><!-- /.tendencias-blog__tendencia -->
-                    <div class="tendencias-blog__tendencia col-sm-4">
-                        <article>
-                            <h2>Dolor sit amet</h2>
-                            <p class="tendencias-blog__post-info">14 de Feb, 2015 16:47 | por <strong>Rickyverona</strong></p>
-                            <br>
-                            <img src="http://lorempixel.com/370/170/fashion/10" alt="" class="img-responsive img-rounded">
-                            <br>
-                            <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco.</p>
-                        </article>
-                    </div><!-- /.tendencias-blog__tendencia -->
+
+                    <?php endwhile; ?>
+
                 </div> 
             </div><!-- /.container -->
         </div><!-- /.tendencias-blog -->
+
+        <?php endif; ?>
+
     </section><!-- /.tendencias -->

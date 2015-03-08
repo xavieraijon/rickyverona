@@ -103,9 +103,11 @@
 			}
 			
 			.tendencias-blog__post-info {
-				@include font-size(1.6);
+				display: block;
 				color: lighten($dark, 45%);
 				font-family: sans-serif;
+				// margin-bottom: 10px;
+
 			}
 		}
 
@@ -203,7 +205,12 @@
 
 }
 
-
+// ------------------------------------------ //
+// Post
+// ------------------------------------------ //
+.post {	
+	margin-top: 100px;
+}
 
 // ------------------------------------------ //
 // Contactar
