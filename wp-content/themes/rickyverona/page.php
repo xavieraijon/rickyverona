@@ -5,7 +5,7 @@
  * @package RickyVerona
  */
 get_header(); ?>
-    
+
     <?php get_template_part( 'content', 'home' ); ?>
     <?php get_template_part( 'content', 'salon' ); ?>
     <?php get_template_part( 'content', 'tendencias' ); ?>

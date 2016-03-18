@@ -5,41 +5,63 @@
  * @package RickyVerona
  */
 
-get_header(); ?>
+get_header('single'); ?>
 
-<div class="container">
+<section class="single-post">
 
-	<?php if ( have_posts() ) : ?>
-	
-		<?php while ( have_posts() ) : the_post(); ?>
+	<div class="container">
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header class="entry-header">
-				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<div class="row">
+			
+			<div class="col-sm-8">
 
-					<small class="tendencias-blog__post-info">Publicado: <?php the_time('l, j \d\e F \a \l\a\s H:m'); ?> | por <strong><?php the_author(); ?></strong></small>
-
-			</header><!-- .entry-header -->
-
-			<div class="entry-content">
-				<?php the_content(); ?>
-				<?php
-					wp_link_pages( array(
-						'before' => '<div class="page-links">' . __( 'Pages:', 'rickyverona' ),
-						'after'  => '</div>',
-					) );
-				?>
-			</div><!-- .entry-content -->
-
-			<footer class="entry-footer">
+				<?php if ( have_posts() ) : ?>
 				
-			</footer><!-- .entry-footer -->
-		</article><!-- #post-## -->
+					<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php endwhile; ?>
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php endif; ?>
+						<header class="entry-header">
 
-</div>
+							<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+							<small class="tendencias-blog__post-info">Publicado: <?php the_time('l, j \d\e F \a \l\a\s H:m'); ?> | por <strong><?php the_author(); ?></strong></small>
 
-<?php get_footer(); ?>
+						</header><!-- .entry-header -->
+
+						<br>
+
+						<div class="entry-content">
+
+							<?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?>
+
+							<br>
+							<br>
+
+							<?php the_content(); ?>
+
+						</div><!-- .entry-content -->
+
+					</article><!-- #post-## -->
+
+					<?php endwhile; ?>
+
+				<?php endif; ?>
+
+			</div>
+
+			<div class="col-sm-4">
+
+				<?php get_sidebar(); ?>
+				
+			</div>
+
+		</div>
+
+	</div>
+
+	<br>
+	<br>
+
+</section>
+
+<?php get_footer('single'); ?>

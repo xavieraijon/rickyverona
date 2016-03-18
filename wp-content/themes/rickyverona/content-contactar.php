@@ -1,22 +1,21 @@
     <section id="contactar" class="contactar">
         <div class="container">
-            <h1><i class="fa fa-chevron-right red"></i>&nbsp;Contacta con nosotros</h1>
+            <h1><i class="fa fa-chevron-right red"></i>&nbsp;<?php the_field('titulo_contacta') ?></h1>
             <br>
             <div class="row">
                 <div class="col-sm-4">
                     <address>
                         <h3 class="red">RickyVerona</h3>
                         Reservas:<br>
-                        <span class="light-red">932 070 780</span><br>
+                        <span class="light-red"><?php the_field('telefono') ?></span><br>
                         <br>
                         Dirección:<br>
                         <span class="light-red">
-                            Carrer de Rosselló, 291<br><small><em>(al lado de la casa de las punxes)</em></small><br>
-                            Barcelona, España<br>
+                            <?php the_field('direccion') ?><br>
                         </span>
                         <br>
                         Si quieres trabajar con nosotros manda tu currículum a:<br>
-                        <a href="mailto:info@rickyverona.com"><span class="light-red">info@rickyverona.com</span></a><br>
+                        <a href="mailto:<?php the_field('email') ?>"><span class="light-red"><?php the_field('email') ?></span></a><br>
                     </address>
                 </div>
                 <div class="col-sm-8">
@@ -40,7 +39,15 @@
             </div>
         </div><!-- /.container -->
     </section><!-- /.productos -->
+    
+    <?php $location = get_field('mapa'); ?>
+
+    <?php if ( !empty($location) ) : ?>
 
     <section id="google-maps" class="google-maps">
-        <div id="map-canvas"></div>
+        <div id="map-canvas">
+            <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
+        </div>
     </section><!-- /.google-maps -->
+
+    <?php endif; ?>

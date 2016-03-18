@@ -91,8 +91,8 @@ function rickyverona_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 }
 add_action( 'widgets_init', 'rickyverona_widgets_init' );
@@ -102,19 +102,29 @@ add_action( 'widgets_init', 'rickyverona_widgets_init' );
  */
 function rickyverona_scripts() {
 	// Styles
-	wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/bower_components/flexslider/flexslider.css' );
+	// wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/bower_components/flexslider/flexslider.css' );
 	wp_enqueue_style( 'owl-carousel-style', get_template_directory_uri() . '/bower_components/owl-carousel2/dist/assets/owl.carousel.css' );
 	wp_enqueue_style( 'owl-carousel-theme-style', get_template_directory_uri() . '/bower_components/owl-carousel2/dist/assets/owl.theme.default.css' );
 	wp_enqueue_style( 'magnific-popup-style', get_template_directory_uri() . '/bower_components/magnific-popup/dist/magnific-popup.css' );
 	wp_enqueue_style( 'animate-css-style', get_template_directory_uri() . '/bower_components/animate.css/animate.min.css' );
+	wp_enqueue_style( 'vegas-style', get_template_directory_uri() . '/bower_components/vegas/dist/vegas.min.css' );
 	wp_enqueue_style( 'rickyverona-style', get_stylesheet_uri() );
 	
 	// Scripts
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/bower_components/modernizr/modernizr.js', array());
 	wp_enqueue_script( 'plugins', get_template_directory_uri() . '/js/plugins.min.js', array(), '1', true );
+	wp_enqueue_script( 'map', get_template_directory_uri() . '/js/map.min.js', array(), '1', true );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), '1', true );
 }
 add_action( 'wp_enqueue_scripts', 'rickyverona_scripts' );
 
 // Register Custom Navigation Walker
 require_once('inc/wp_bootstrap_navwalker.php');
+
+add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+
+function remove_width_attribute( $html ) {
+   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+   return $html;
+}

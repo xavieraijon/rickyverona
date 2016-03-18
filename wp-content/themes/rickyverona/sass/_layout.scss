@@ -11,6 +11,20 @@
 }
 
 // ------------------------------------------ //
+// Hero Wrapper
+// ------------------------------------------ //
+.hero-wrapper {
+	position: absolute;
+	bottom: 100px;
+	right: 100px;
+	width: 500px;
+	padding: 60px;
+	background-color: rgba(0,0,0,0.5);
+	// border-radius: 50%;
+	color: #fff;
+}
+
+// ------------------------------------------ //
 // Salon
 // ------------------------------------------ //
 .home {
@@ -36,10 +50,9 @@
 // Salon
 // ------------------------------------------ //
 .salon {
-	// margin-bottom: 60px;
 
 	.salon-description {
-		// margin: 0 0 60px 0;
+		margin: 0 0 80px 0;
 		padding: 80px 0 100px 0;
 		background-color: $dark;
 		color: #fff;
@@ -82,7 +95,7 @@
 	.tendencias-blog {
 		margin-top: 100px;
 		padding: 80px 0 100px 0;
-		background-color: rgba(0,0,0,0.6);
+		background-color: $dark;
 
 		.tendencias-blog__tendencia {
 			padding-top: 30px;
@@ -120,7 +133,8 @@
 // Productos
 // ------------------------------------------ //
 .productos {
-	margin-top: 80px;
+	margin-top: 100px;
+	padding-top: 100px;
 }
 
 
@@ -142,7 +156,8 @@
 // Equipo
 // ------------------------------------------ //
 .equipo {
-	margin-top: 80px;
+	margin-top: 100px;
+	padding-top: 100px;
 	
 	.equipo-item {
 		position: relative;
@@ -183,7 +198,9 @@
 					margin-top: 30px;
 					opacity: 0;
 					text-align: center;
-					@include transition (all .3s ease-in-out);					
+					@include transition (all .3s ease-in-out);
+
+					@include font-size(1.6);
 				}
 			}
 		}
@@ -210,6 +227,39 @@
 // ------------------------------------------ //
 .post {	
 	margin-top: 100px;
+}
+
+// ------------------------------------------ //
+// Single Post
+// ------------------------------------------ //
+
+.single-post {
+
+	> .container {
+		padding: 60px 0;
+	}
+
+	article {
+		line-height: 1.8;
+	}
+}
+
+.widget-area {
+	margin-top: 100px;
+	padding: 30px;
+	background-color: $red;
+	min-height: 100%;
+
+	h3 {
+		color: #fff;
+	}
+
+	a {
+		&:hover {
+			color: rgba(255,255,255,0.6);
+		}
+	}
+	
 }
 
 // ------------------------------------------ //

@@ -50,12 +50,28 @@
     }
 }
 
+.single {
+  .navbar-brand {
+    > img {
+      @include box-shadow(none);
+    }
+  }
+}
+
+
 
 
 
 // ------------------------------------------ //
 // Navbar Default
 // ------------------------------------------ //
+
+.single {
+  .navbar-default {
+    background-color: #000;
+  }
+}
+
 .navbar-default {
   border: none;
   background-color: #000;
@@ -68,12 +84,15 @@
 
   @media (min-width: $screen-sm-min) {
     min-height: 100px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.5);
   }
   
   @media (min-width: $grid-float-breakpoint) {
     &.normal { min-height: 100px; }
-    &.stuck {min-height: 60px;}
+    &.stuck {
+      min-height: 60px;
+      background-color: rgba(0,0,0,0.9);
+    }
     &.stuck {
       .navbar-nav {
           > li {
